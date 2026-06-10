@@ -5,6 +5,9 @@ on:
   push:
   merge_group:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-24.04-arm
@@ -36,7 +39,7 @@ jobs:
   release:
     runs-on: ubuntu-24.04-arm
     needs: build
-    if: github.event_name != 'pull_request' && github.event_name != 'merge_group' && github.ref_name == 'trixie'
+    if: github.event_name != 'pull_request' && github.event_name != 'merge_group' && github.ref_name == '20260610-glob-support'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -67,13 +70,12 @@ jobs:
         with:
           tag_name: ${{ env.version }}
           body_path: README.md
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ACTION_TOKEN }}
           target_commitish: trixie
           draft: false
           fail_on_unmatched_files: false
           files: |
             *.deb
-            pkg.conf
             VERSION
       - name: Append changelog
         if: env.distro != 'UNRELEASED'
