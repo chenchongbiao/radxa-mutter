@@ -24,3 +24,6 @@ gdctl-Do-not-crash-if-backlight-property-is-not-available.patch
 wayland-touch-Rename-fields-and-functions-for-clarity.patch
 wayland-touch-Expose-the-current-touch-surface.patch
 wayland-seat-Track-current-touch-surface.patch
+radxa/0001-kms-plane-Avoid-assigning-plane-active-on-other-CRTC.patch
+radxa/0002-kms-plane-dynamic-crtc-tracking-and-unassign.patch
+radxa/0003-fix-hot-unplug-freeze.patch
